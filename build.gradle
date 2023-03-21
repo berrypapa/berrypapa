@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.4'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'search.blog'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring boot
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Logger
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.6'
+
+    // H2
+    runtimeOnly 'com.h2database:h2'
+
+    // JPA
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.0.3'
+
+    // Hibernate validator
+    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '8.0.0.Final'
+
+    // Lombok
+    implementation group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+    testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.26'
+
+    // Swagger
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.0.2'
+
+    // Webflux
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '3.0.4'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'app.SearchBlogApplication'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
