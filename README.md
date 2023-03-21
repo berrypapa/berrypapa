@@ -13,4 +13,5 @@
 * Swagger : API 확인을 편하게 하기 위해 사용.
 * Webflux : 외부 서버로 요청을 위해 사용.
 
-### 자세한 내용은 PDF로 전달하였습니다. 감사합니다.
+### Jar 파일 전달을 위한 구글 드라이브 링크
+https://drive.google.com/file/d/1eqEdDssjROnQGIbwe1XFzz8zymiSkCBM/view?usp=share_link
